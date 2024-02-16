@@ -32,6 +32,14 @@
   <button id="displayGenresBtn">Display Selected Genres</button>
   <p id="displayGenresResult"></p>
 
+
+  <label>Program 4: Choose multiple items from a resturant menu: </label>
+  <input type="checkbox" name="menuItem" value="Burger" /> Burger
+  <input type="checkbox" name="menuItem" value="Pizza" /> Pizza
+  <input type="checkbox" name="menuItem" value="Salad" /> Salad
+  <button id="displayItemsBtn">Display Selected Items</button>
+  <p id="displayItemsResult"></p>
+  
   <script>
     //display sports
     const sportsCheckbox = document.getElementsByName("sports");
@@ -101,10 +109,33 @@
       }
 
     displayGenresBtn.addEventListener("click", function(){
-      displayGenresResult.textContent = `Selected Genres: ${selectedGenres.join(", ")}`
+      displayGenresResult.textContent = `Selected Movie Genres: ${selectedGenres.join(", ")}`
     })
 
-  
+  //display selected menu items
+    const menuItemsCheckbox = document.getElementsByName("menuItem");
+    const displayItemsBtn = document.getElementById("displayItemsBtn");
+    const displayItemsResult =  document.getElementById("displayItemsResult");
+
+    let selectedFoods;
+    for (let index = 0; index < menuItemsCheckbox.length; index++)
+      {
+        menuItemsCheckbox[index].addEventListener("change", function(){
+          let selectedItems = [];
+          for (let childIndex = 0; childIndex < menuItemsCheckbox.length; childIndex++)
+            {
+              if (menuItemsCheckbox[childIndex].checked)
+              {
+                selectedItems.push(menuItemsCheckbox[childIndex].value);
+              }
+            }
+          selectedFoods = selectedItems;
+        })
+      }
+
+    displayItemsBtn.addEventListener("click", function(){
+      displayItemsResult.textContent = `Selected Menu Items: ${selectedFoods.join(", ")}`
+    })
     
   </script>
 </body>
