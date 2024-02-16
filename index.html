@@ -24,6 +24,14 @@
   <button id="displayDestinationBtn">Display Selected Destinations</button>
   <p id="displayDestinationResult"></p>
 
+
+  <label>Program 3: Select multiple movie genres: </label>
+  <input type="checkbox" name="genre" value="Action" /> Action
+   <input type="checkbox" name="genre" value="Comedy" /> Comedy
+   <input type="checkbox" name="genre" value="Drama" /> Drama
+  <button id="displayGenresBtn">Display Selected Genres</button>
+  <p id="displayGenresResult"></p>
+
   <script>
     //display sports
     const sportsCheckbox = document.getElementsByName("sports");
@@ -31,22 +39,22 @@
     const displaySportsResult = document.getElementById("displaySportsResult");
 
     let selectedSportsList;
-    
+
     for (let index = 0; index < sportsCheckbox.length; index++) {
-    sportsCheckbox[index].addEventListener("change", function () {
-         const selectedItems = [];
+      sportsCheckbox[index].addEventListener("change", function () {
+        const selectedItems = [];
         for (let childIndex = 0; childIndex < sportsCheckbox.length; childIndex++) {
           if (sportsCheckbox[childIndex].checked) {
             selectedItems.push(sportsCheckbox[childIndex].value)
           }
         }
-      selectedSportsList = selectedItems;
+        selectedSportsList = selectedItems;
       })
     }
 
 
-    
-    displaySportsBtn.addEventListener("click", function () {  
+
+    displaySportsBtn.addEventListener("click", function () {
       displaySportsResult.textContent = `Selected Sports: ${selectedSportsList.join(", ")}`
     });
 
@@ -56,20 +64,24 @@
     const displayDestinationResult = document.getElementById("displayDestinationResult");
 
     let selectedDestinations;
-    for (let index = 0; index < destinationCheckbox.length; index++)
-      {
-        destinationCheckbox[index].addEventListener("change", function(){
-          const selectedItems = [];
-          for (let childIndex = 0; childIndex < destinationCheckbox.length; childIndex++)
-            {
-              if (destinationCheckbox[childIndex].checked)
-              {
-                
-              }
-            }
-        })
-      }
+    for (let index = 0; index < destinationCheckbox.length; index++) {
+      destinationCheckbox[index].addEventListener("change", function () {
+        const selectedItems = [];
+        for (let childIndex = 0; childIndex < destinationCheckbox.length; childIndex++) {
+          if (destinationCheckbox[childIndex].checked) {
+            selectedItems.push(destinationCheckbox[childIndex].value);
+          }
+        }
+        selectedDestinations = selectedItems;
+      })
+    }
 
+  displayDestinationBtn.addEventListener("click", function(){
+    displayDestinationResult.textContent = `Selected Destinations: ${selectedDestinations.join(", ")}`
+  });
+
+  //display 
+    
   </script>
 </body>
 
