@@ -80,7 +80,31 @@
     displayDestinationResult.textContent = `Selected Destinations: ${selectedDestinations.join(", ")}`
   });
 
-  //display 
+  //display movie genres
+    const genresCheckbox = document.getElementsByName("genre");
+    const displayGenresBtn = document.getElementById("displayGenresBtn");
+    const displayGenresResult = document.getElementById("displayGenresResult");
+
+    let selectedGenres;
+    for (let index = 0; index < genresCheckbox.length; index++)
+      {
+        genresCheckbox[index].addEventListener("change", function(){
+          const selectedItems = [];
+          for (let childIndex = 0; childIndex < genresCheckbox.length; childIndex++)
+            {
+              if (genresCheckbox[childIndex].checked){
+              selectedItems.push(genresCheckbox[childIndex].value);
+              }
+            }
+          selectedGenres = selectedItems;
+        })
+      }
+
+    displayGenresBtn.addEventListener("click", function(){
+      displayGenresResult.textContent = `Selected Genres: ${selectedGenres.join(", ")}`
+    })
+
+  
     
   </script>
 </body>
