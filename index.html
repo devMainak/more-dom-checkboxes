@@ -27,8 +27,8 @@
 
   <label>Program 3: Select multiple movie genres: </label>
   <input type="checkbox" name="genre" value="Action" /> Action
-   <input type="checkbox" name="genre" value="Comedy" /> Comedy
-   <input type="checkbox" name="genre" value="Drama" /> Drama
+  <input type="checkbox" name="genre" value="Comedy" /> Comedy
+  <input type="checkbox" name="genre" value="Drama" /> Drama
   <button id="displayGenresBtn">Display Selected Genres</button>
   <p id="displayGenresResult"></p>
 
@@ -39,7 +39,15 @@
   <input type="checkbox" name="menuItem" value="Salad" /> Salad
   <button id="displayItemsBtn">Display Selected Items</button>
   <p id="displayItemsResult"></p>
-  
+
+
+  <label>Program 5: Select multiple fruits:</label>
+  <input type="checkbox" name="fruits" value="Apple" /> Apple
+  <input type="checkbox" name="fruits" value="Banana" /> Banana
+  <input type="checkbox" name="fruits" value="Orange" /> Orange
+  <button id="displayFruitsBtn">Display Selected Fruits</button>
+  <p id="displayFruitsResult"></p>
+
   <script>
     //display sports
     const sportsCheckbox = document.getElementsByName("sports");
@@ -84,59 +92,76 @@
       })
     }
 
-  displayDestinationBtn.addEventListener("click", function(){
-    displayDestinationResult.textContent = `Selected Destinations: ${selectedDestinations.join(", ")}`
-  });
+    displayDestinationBtn.addEventListener("click", function () {
+      displayDestinationResult.textContent = `Selected Destinations: ${selectedDestinations.join(", ")}`
+    });
 
-  //display movie genres
+    //display movie genres
     const genresCheckbox = document.getElementsByName("genre");
     const displayGenresBtn = document.getElementById("displayGenresBtn");
     const displayGenresResult = document.getElementById("displayGenresResult");
 
     let selectedGenres;
-    for (let index = 0; index < genresCheckbox.length; index++)
-      {
-        genresCheckbox[index].addEventListener("change", function(){
-          const selectedItems = [];
-          for (let childIndex = 0; childIndex < genresCheckbox.length; childIndex++)
-            {
-              if (genresCheckbox[childIndex].checked){
-              selectedItems.push(genresCheckbox[childIndex].value);
-              }
-            }
-          selectedGenres = selectedItems;
-        })
-      }
+    for (let index = 0; index < genresCheckbox.length; index++) {
+      genresCheckbox[index].addEventListener("change", function () {
+        const selectedItems = [];
+        for (let childIndex = 0; childIndex < genresCheckbox.length; childIndex++) {
+          if (genresCheckbox[childIndex].checked) {
+            selectedItems.push(genresCheckbox[childIndex].value);
+          }
+        }
+        selectedGenres = selectedItems;
+      })
+    }
 
-    displayGenresBtn.addEventListener("click", function(){
+    displayGenresBtn.addEventListener("click", function () {
       displayGenresResult.textContent = `Selected Movie Genres: ${selectedGenres.join(", ")}`
     })
 
-  //display selected menu items
+    //display selected menu items
     const menuItemsCheckbox = document.getElementsByName("menuItem");
     const displayItemsBtn = document.getElementById("displayItemsBtn");
-    const displayItemsResult =  document.getElementById("displayItemsResult");
+    const displayItemsResult = document.getElementById("displayItemsResult");
 
     let selectedFoods;
-    for (let index = 0; index < menuItemsCheckbox.length; index++)
-      {
-        menuItemsCheckbox[index].addEventListener("change", function(){
-          let selectedItems = [];
-          for (let childIndex = 0; childIndex < menuItemsCheckbox.length; childIndex++)
-            {
-              if (menuItemsCheckbox[childIndex].checked)
-              {
-                selectedItems.push(menuItemsCheckbox[childIndex].value);
-              }
-            }
-          selectedFoods = selectedItems;
-        })
-      }
+    for (let index = 0; index < menuItemsCheckbox.length; index++) {
+      menuItemsCheckbox[index].addEventListener("change", function () {
+        let selectedItems = [];
+        for (let childIndex = 0; childIndex < menuItemsCheckbox.length; childIndex++) {
+          if (menuItemsCheckbox[childIndex].checked) {
+            selectedItems.push(menuItemsCheckbox[childIndex].value);
+          }
+        }
+        selectedFoods = selectedItems;
+      })
+    }
 
-    displayItemsBtn.addEventListener("click", function(){
+    displayItemsBtn.addEventListener("click", function () {
       displayItemsResult.textContent = `Selected Menu Items: ${selectedFoods.join(", ")}`
     })
-    
+
+    //display fruits
+    const fruitsCheckbox = document.getElementsByName("fruits");
+    const displayFruitsBtn = document.getElementById("displayFruitsBtn");
+    const displayFruitsResult = document.getElementById("displayFruitsResult");
+
+    let selectedFruits;
+    for (let i = 0; i < fruitsCheckbox.length; i++) {
+      fruitsCheckbox[i].addEventListener("change", function () {
+        let selectedItems = [];
+        for (let j = 0; j < fruitsCheckbox.length; j++) {
+          if (fruitsCheckbox[j].checked) {
+            selectedItems.push(fruitsCheckbox[j].value);
+          }
+        }
+        selectedFruits = selectedItems;
+      });
+    }
+
+    displayFruitsBtn.addEventListener("click", function () {
+      displayFruitsResult.textContent = `Selected Fruits: ${selectedFruits.join(", ")}`
+    })
+
   </script>
 </body>
 
